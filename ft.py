@@ -88,7 +88,6 @@ def familyTree(peopleDictionaryHistory):
         sys.stdout = f
         tree.show()
     sys.stdout = sys.__stdout__  # Reset standard output
-    # webbrowser.open_new_tab(f'file://{pathlib.Path(output_path)}')
     with open(output_path, "r", encoding="utf-8") as file:  # Open the file in binary mode
         family_tree = file.read()  # Read the entire content as bytes
         import ast
