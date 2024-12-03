@@ -70,7 +70,6 @@ class Person:
         elif len(peopleDictionary) == 1:
             self.gender = 1
 
-
     def eat(self):
         global food
         lfood = ft.line_food
@@ -101,7 +100,6 @@ class Person:
                 food -= .5
         return multiplier
 
-
     def marraige(self, name):
         global agriculture
         name = name
@@ -116,7 +114,6 @@ class Person:
                         possible_partners.remove(partner)
                 if len(possible_partners) < 1:
                     possible_partners = [p for p in peopleDictionary if p.name != self.name]
-
 
                 partner = random.choice(possible_partners)
 
@@ -140,11 +137,8 @@ class Person:
                 if self.mother.name == partner.mother.name:
                     inbred = True
 
-
-
                 if self.father.name == partner.father.name:
                     inbred = True
-
 
                 lfood = ft.line_food
                 multiplier = math.ceil(lfood[-1] / len(peopleDictionary))
@@ -161,11 +155,9 @@ class Person:
                     if random.randint(0, 1) == 1:
                         self.have_child(name, inbred)
 
-
             except IndexError:
                 print('index error')
                 pass
-
 
     def generate_name(self, name, partner):
         name = name
@@ -287,8 +279,6 @@ class Person:
                 else:
                     new_name = random.choice(vowel) + new_name[random.randint(0,1)]
 
-
-
         if len(new_name) < 4 and gender == 1:
             new_name = new_name + random.choice(femmSuffix)
 
@@ -300,10 +290,8 @@ class Person:
         if len(new_name) < 2:
             new_name = new_name + random.choice(vowel) + random.choice(consonats)
 
-
         new_name = new_name.lower().title()
         return new_name, n, gender
-
 
     def have_child(self, name, inbred=False):
         name = name
@@ -365,16 +353,11 @@ class Person:
                         born_this_year += 1
                         lastNames.append(new_name)
 
-
-
-
-
         if self.gender == 0 and self.partner.gender == 1:
             if self.partner.pregnant is False:
                 if self.partner.age > fertilityx and self.partner.age < fertilityy:
                     if random.randint(0, 1) == 1:
                         self.partner.pregnant = True
-
 
 def harvest(line_year, line_food):
     ablePeople = 0
@@ -384,7 +367,6 @@ def harvest(line_year, line_food):
     for person in peopleDictionary:
         if person.age > workingx and person.age < workingy:
             ablePeople += 1
-
 
     food += ablePeople * agriculture
 
@@ -404,9 +386,7 @@ def harvest(line_year, line_food):
         food = 0
 
     else:
-
         food -= len(peopleDictionary)
-
 
         if food > len(peopleDictionary):
             foodToDegrade = food / 3
@@ -434,7 +414,6 @@ def killPeople(victim, event, person=object):
         peopleDictionary.remove(person)
         peopleDictionaryAncestors.append(person)
         died_this_year += 1
-
 
 def disaster(year):
     global food
@@ -477,9 +456,6 @@ def runYear():
     disasterChance = random.randint(0, max(maxDisasterChance, 15))
     disaster(line_year[-1])
 
-
-
-
     ft.plot_graph(peopleDictionary, born_this_year, died_this_year, food)
 
     if len(line_food) > 1:
@@ -499,10 +475,6 @@ def runYear():
     died_this_year = 0
     inbreeding = 0
 
-
-
-
-
 def beginSim():
     for x in range(0, startPopulation):
         peopleDictionary.append(Person(age= 20,
@@ -512,11 +484,10 @@ def beginSim():
                                        id=x,
                                        gender=random.randint(0, 1)))
 
-
 def main():
     global simulationLimit, startPopulation
+    
     # beginSim()
-
     o = str(input('Run simulation? Y or N: ')).lower()
     if o == 'y':
         o = int(input('Start Population? (>=2 or < <=50): '))
@@ -532,7 +503,6 @@ def main():
                 print('You have not entered a valid number')
                 time.sleep(2)
                 sys.exit()
-
 
         c = int(input('Target population cap (must be greater than start population): '))
         if type(c) != int:
@@ -552,20 +522,12 @@ def main():
         sys.exit()
 
 
-
-
-
-
-
-
-
 if __name__ == '__main__':
     main()
 
 while len(peopleDictionary) < simulationLimit and len(peopleDictionary) > 1:
     runyear = runYear()
 else:
-
     o = str(input("\nWhat output would you like; '\033[32mG\033[0m'raph, '\033[32mF\033[0m'amily Tree, or '\033[32mB\033[0m'oth? ")).lower()
     try:
         if o == 'g':
@@ -573,15 +535,8 @@ else:
         elif o == 'f':
             ft.familyTree(peopleDictionaryHistory)
         elif o == 'b':
-
             ft.familyTree(peopleDictionaryHistory)
             ft.show_graph()
-
-        elif o == 'e':
-            allPeople = peopleDictionaryAncestors + peopleDictionary
-            ft.faimilyTreeAll_Spreadsheet(allPeople)
-            for x in range(0, len(peopleDictionary)):
-                ft.faimilyTree_Spreadsheet(peopleDictionary, x)
         else:
             print('None selected')
             time.sleep(1)
