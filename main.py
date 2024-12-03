@@ -1,5 +1,4 @@
 import random, math, sys, ft, time, os
-import os
 
 #Variables
 startPopulation = 50
