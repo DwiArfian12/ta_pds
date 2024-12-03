@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from treelib import Tree
-import sys, os, csv, ast
+import sys, os, ast
 
 line_year = [1]
 line_population = [0]
@@ -35,7 +35,7 @@ def show_graph():
 
 def familyTree(peopleDictionaryHistory):
     tree = Tree()
-    tree.create_node("THE CREATOR", "God")  # Root node
+    tree.create_node("THE CREATOR", "God") # Root node
 
     # Use a dictionary to track unique nodes
     added_nodes = {"God"}
@@ -78,7 +78,7 @@ def familyTree(peopleDictionaryHistory):
         sys.stdout = f
         tree.show()
     sys.stdout = sys.__stdout__  # Reset standard output
-    with open(output_path, "r", encoding="utf-8") as file:  # Open the file in binary mode
+    with open(output_path, "r", encoding="utf-8") as file: # Open the file in binary mode
         family_tree = file.read()  # Read the entire content as bytes
         decoded_tree = ast.literal_eval(family_tree).decode('utf-8')
         print(decoded_tree)
