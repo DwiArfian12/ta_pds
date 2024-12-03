@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
-from treelib import Node, Tree
-import webbrowser
-import sys, pathlib, os, csv
+from treelib import Tree
+import sys, os, csv, ast
 
 line_year = [1]
 line_population = [0]
@@ -12,8 +11,6 @@ line_food = [0]
 
 def plot_graph(people, child, death, food):
     global line_year, line_population, line_avg_age, line_max_workers, line_deaths, line_children_born, born_this_year, died_this_year
-    # line_deaths.append(death)
-    # line_children_born.append(child)
     line_year.append(line_year[-1] + 1)
     line_population.append(len(people))
     line_food.append(food)
@@ -26,12 +23,8 @@ def plot_graph(people, child, death, food):
     except ZeroDivisionError:
         line_avg_age.append(0)
 
-
-
 def show_graph():
     plt.plot(line_year, line_population, label="Population", color=[0, 1, 0])
-    # plt.plot(line_year, line_deaths, label="Deaths", color=[1, 0, 0])
-    # plt.plot(line_year, line_children_born, label="Births", color=[0, 0, 0])
     plt.plot(line_year, line_avg_age, label="Average Age", color=[1, 1, 0])
     plt.plot(line_year, line_food, label="Food", color=[0, 0, 1])
     plt.xlabel('Years')
@@ -41,9 +34,6 @@ def show_graph():
     plt.show()
 
 def familyTree(peopleDictionaryHistory):
-    from treelib import Tree
-    import sys, pathlib, os, webbrowser
-
     tree = Tree()
     tree.create_node("THE CREATOR", "God")  # Root node
 
@@ -90,7 +80,6 @@ def familyTree(peopleDictionaryHistory):
     sys.stdout = sys.__stdout__  # Reset standard output
     with open(output_path, "r", encoding="utf-8") as file:  # Open the file in binary mode
         family_tree = file.read()  # Read the entire content as bytes
-        import ast
         decoded_tree = ast.literal_eval(family_tree).decode('utf-8')
         print(decoded_tree)
 
