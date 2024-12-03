@@ -1,5 +1,5 @@
 import random, math, sys, ft, time, os
-from os import system, name
+import os
 
 #Variables
 startPopulation = 50
@@ -19,56 +19,12 @@ infantMortality = 10
 workingx = 14
 workingy = 67
 lastNames = [
-'Smith',
-'Jones',
-'Williams',
-'Brown',
-'Wilson',
-'Taylor',
-'Anderson',
-'Johnson',
-'White',
-'Thompson',
-'Lee',
-'Martin',
-'Thomas',
-'Walker',
-'Kelly',
-'Young',
-'Harris',
-'King',
-'Ryan',
-'Roberts',
-'Hall',
-'Evans',
-'Davis',
-'Wright',
-'Baker',
-'Campbell',
-'Edwards',
-'Clark',
-'Robinson',
-'McDonald',
-'Hill',
-'Scott',
-'Clarke',
-'Mitchell',
-'Stewart',
-'Moore',
-'Turner',
-'Miller',
-'Green',
-'Watson',
-'Bell',
-'Wood',
-'Cooper',
-'Murphy',
-'Jackson',
-'James',
-'Lewis',
-'Allen',
-'Bennett',
-'Robertson']
+'Smith', 'Jones', 'Williams', 'Brown', 'Wilson', 'Taylor', 'Anderson', 'Johnson', 'White', 
+'Thompson', 'Lee', 'Martin', 'Thomas', 'Walker', 'Kelly', 'Young', 'Harris', 'King', 'Ryan', 
+'Roberts', 'Hall', 'Evans', 'Davis', 'Wright', 'Baker', 'Campbell', 'Edwards', 'Clark', 
+'Robinson', 'McDonald', 'Hill', 'Scott', 'Clarke', 'Mitchell', 'Stewart', 'Moore', 'Turner', 
+'Miller', 'Green', 'Watson', 'Bell', 'Wood', 'Cooper', 'Murphy', 'Jackson', 'James', 'Lewis', 
+'Allen', 'Bennett', 'Robertson']
 femmSuffix = ['ine', 'ela', 'a', 'lyn']
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 consonats = 'bcdfghjklmnpqrstvwxyz'
